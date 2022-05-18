@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Rotas from './Rotas';
 import reportWebVitals from './reportWebVitals';
+import Repositories from './Repositories';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App title="sei la mano"/>
+    <Rotas />
 );
 
 reportWebVitals();

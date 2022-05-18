@@ -1,0 +1,22 @@
+.classInputHome{
+    width: 30% !important;
+    margin-inline: auto;
+    margin-top: 120px;
+}
+
+.classButtonHome{
+    margin-inline: auto;
+    display: block !important;
+    margin-top: 15px;
+}
+
+.classListHome{
+    margin: 25px auto;    
+    width: fit-content;
+}
+
+.classH1Home{
+    width: fit-content;
+    margin-inline: auto;    
+    margin-top: 50px;
+}
