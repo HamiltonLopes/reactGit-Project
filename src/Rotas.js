@@ -4,8 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import Home from "./Home";
-import Repositories from "./Repositories";
+import Home from "./pages/home/Home";
+import Repositories from "./pages/repositories/Repositories";
 
 export default function Rotas(){
   return (

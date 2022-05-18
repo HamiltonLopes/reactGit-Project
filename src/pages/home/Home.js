@@ -17,6 +17,11 @@ export default function Home(props) {
         });
         setShowItToYou(obj.data);
         console.log(obj);
+        const jsonArchive = [];
+        obj.data.map((response)=>{
+            jsonArchive.push(response.name);
+        });
+        console.log(jsonArchive);
     }
 
     return (
