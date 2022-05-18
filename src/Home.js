@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Input, Button, List, InputGroup } from 'reactstrap';
 import Style from './Home.module.css';
 
 
-function Home(props) {
+export default function Home(props) {
     const [estado, setEstado] = useState('');
     const [showItToYou, setShowItToYou] = useState([]);
     async function handlePesquisa() {
         const obj = await axios.get(`https://api.github.com/users/${estado}/repos`).catch((error) => {
-            if (error.response.status == 404) {
+            if (error.response.status === 404) {
                 alert('Usuário não existe!');
                 return false;
             }
@@ -36,12 +36,12 @@ function Home(props) {
             <Button className={Style.classButtonHome} onClick={handlePesquisa}>Pesquisar</Button> */}
 
             <p className={Style.classListHome}>
-                {(!(showItToYou == undefined) && showItToYou.length > 0) ? `Os repositórios do usuário ${estado} são:` : ``}
+                {(!(showItToYou === undefined) && showItToYou.length > 0) ? `Os repositórios do usuário ${estado} são:` : ``}
             </p>
 
             <List type='unstyled' className={Style.classListHome} >
                 {
-                    (!(showItToYou == undefined)) ?
+                    (!(showItToYou === undefined)) ?
                         showItToYou.map((rep, id) => (
                             <li key={id}>
                                 {rep.name}
@@ -49,11 +49,7 @@ function Home(props) {
                         : ''
                 }
             </List>
-
         </>
     );
-
 }
 
-
-export default Home;
