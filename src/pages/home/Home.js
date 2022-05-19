@@ -15,13 +15,16 @@ export default function Home(props) {
             }
             console.log(error);
         });
+
         setShowItToYou(obj.data);
         console.log(obj);
+        
         const jsonArchive = [];
         obj.data.map((response)=>{
             jsonArchive.push(response.name);
         });
-        console.log(jsonArchive);
+
+        localStorage.setItem('respositoriesName', JSON.stringify(jsonArchive));
     }
 
     return (
