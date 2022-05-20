@@ -1,13 +1,13 @@
 .classInputHome{
-    width: 30% !important;
+    width: 30vw !important;
     margin-inline: auto;
-    margin-top: 120px;
+    margin-top: 30px;
 }
 
 .classButtonHome{
     margin-inline: auto;
     display: block !important;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 
 .classListHome{
@@ -18,5 +18,55 @@
 .classH1Home{
     width: fit-content;
     margin-inline: auto;    
-    margin-top: 50px;
+    margin-top: 20px;
+}
+
+.classH3Home{
+    width: fit-content;
+    margin-inline: auto;    
+    margin-top: 100px;
+}
+
+.classErrorMessage{
+    width: 30vw !important;
+    display: block !important;
+    margin-inline: auto;
+}
+
+.classImgHome{
+    margin-top: 10px;
+    width: 20%;
+    display: block;
+    margin-inline: auto;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .classImgHome{
+        margin-top: 50%;
+        width: 50%;
+    }
+
+    .classH3Home{
+        font-size: 2.8rem;
+        margin-bottom: 5%;
+    }
+
+    .classH1Home{
+        margin-top: 10px;
+        font-size: 3rem;
+    }
+    .classInputHome{
+        width: 70vw !important;
+    }
+    .classButtonHome{
+        font-size: 2rem !important;
+    }
+    .classInputLabel{
+        font-size: 2rem !important;
+    }
+    .classErrorMessage{
+        width: 70vw !important;
+        font-size: 1.3rem !important;
+    }
 }

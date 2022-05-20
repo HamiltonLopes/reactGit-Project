@@ -1,62 +1,75 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Input, Button, List, InputGroup } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
+import { Input, Button, List, InputGroup, FormFeedback, FormGroup } from 'reactstrap';
 import Style from './Home.module.css';
-
+import logo from '../../assets/logo.png';
 
 export default function Home(props) {
-    const [estado, setEstado] = useState('');
-    const [showItToYou, setShowItToYou] = useState([]);
-    async function handlePesquisa() {
-        const obj = await axios.get(`https://api.github.com/users/${estado}/repos`).catch((error) => {
-            if (error.response.status === 404) {
-                alert('Usuário não existe!');
-                return false;
-            }
+    const history = useNavigate();
+    const [user, setuser] = useState('');
+    const [err, setErr] = useState(false);
+    // Var para mostrar repositorios na tela
+    // const [showItToYou, setShowItToYou] = useState([]);
+    function handlePesquisa() {
+        setErr(false);
+        axios.get(`https://api.github.com/users/${user}/repos`).then((res) => {
+            const obj = res;
+            // Atualizava repositório na tela
+            // setShowItToYou(obj.data);
+            console.log(obj.data);
+
+            const jsonArchive = [];
+            obj.data.map((response) => {
+                jsonArchive.push(response.name);
+            });
+
+            localStorage.setItem('repositoriesName', JSON.stringify(jsonArchive));
+            localStorage.setItem('user', user);
+            history('/repositories');
+        }).catch((error) => {
+            setErr(true);
             console.log(error);
         });
-
-        setShowItToYou(obj.data);
-        console.log(obj);
-        
-        const jsonArchive = [];
-        obj.data.map((response)=>{
-            jsonArchive.push(response.name);
-        });
-
-        localStorage.setItem('respositoriesName', JSON.stringify(jsonArchive));
     }
 
     return (
-        <>
-            <h1 className={Style.classH1Home}> user: {estado} </h1>
+        <>  
+            <img className={Style.classImgHome} src={logo} alt='githublogo'/>
+            <h1 className={Style.classH1Home}>Consulta repositórios do usuário git!</h1>
+            <h3 className={Style.classH3Home}> Usuário: {user} </h3>
 
             {/* Versão professor: */}
-            <InputGroup className={Style.classInputHome}>
-                <Input  placeholder="Usuário" value={estado} onChange={e => setEstado(e.target.value)} />
-                <Button onClick={handlePesquisa}>Pesquisar</Button>
-            </InputGroup>
-
+            <FormGroup>
+                <InputGroup className={Style.classInputHome} >
+                    <Input placeholder="Usuário" value={user} onClick={() => err ? setErr(false) : ''} onChange={e => setuser(e.target.value)}
+                        className={`${Style.classInputLabel} ${err ? 'is-invalid form-control' : ''}`} />
+                    <Button className={Style.classButtonHome} onClick={handlePesquisa} color='dark'>Pesquisar</Button>
+                </InputGroup>
+                {err ? <FormFeedback className={Style.classErrorMessage}> Usuário não existe!!!
+                </FormFeedback> : ''}
+            </FormGroup>
 
             {/* Versão Hamilton */}
-            {/* <Input className={Style.classInputHome} placeholder="Usuário" value={estado} onChange={e => setEstado(e.target.value)} />
-
+            {/* <Input className={Style.classInputHome} placeholder="Usuário" value={user} onChange={e => setuser(e.target.value)} />
             <Button className={Style.classButtonHome} onClick={handlePesquisa}>Pesquisar</Button> */}
 
-            <p className={Style.classListHome}>
-                {(!(showItToYou === undefined) && showItToYou.length > 0) ? `Os repositórios do usuário ${estado} são:` : ``}
+
+            {/* Mostra os repositórios na tela */}
+            {/* <p className={Style.classListHome}>
+                {(!(showItToYou === undefined) && showItToYou.length > 0) ? `Os repositórios do usuário ${user} são:` : ``}
             </p>
 
             <List type='unstyled' className={Style.classListHome} >
                 {
-                    (!(showItToYou === undefined)) ?
+                    showItToYou ?
                         showItToYou.map((rep, id) => (
                             <li key={id}>
                                 {rep.name}
                             </li>))
                         : ''
                 }
-            </List>
+            </List> */}
         </>
     );
 }

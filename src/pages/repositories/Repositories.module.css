@@ -1,0 +1,52 @@
+.classLinkRep{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.classLinkRep:hover{
+    color: rgb(145, 145, 145);
+}
+
+.classButtonRep{
+    margin-block: 2rem;
+    display: block !important;
+    margin-inline: auto;
+}
+
+.classH1Rep{
+    text-align: center;
+}
+
+.wrapperRep{
+    padding-inline:20rem;
+}
+
+.classDivTitRep{
+    margin-block: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.classImgRep{
+    width: 8%;
+    height: 8%;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .wrapperRep{
+        padding-inline: 5rem;
+        font-size: 120%;
+    }
+    .classDivTitRep{
+        margin-top: 10rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width:1400px ) {
+    .wrapperRep{
+        padding-inline: 10rem;
+    }
+}
