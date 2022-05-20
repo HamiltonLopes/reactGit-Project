@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/reactGit-Project/static/css/main.c3c7e43d.css",
+    "main.js": "/reactGit-Project/static/js/main.b6066578.js",
+    "static/media/logo.png": "/reactGit-Project/static/media/logo.53150c51d0f0bd86a44a.png",
+    "index.html": "/reactGit-Project/index.html",
+    "main.c3c7e43d.css.map": "/reactGit-Project/static/css/main.c3c7e43d.css.map",
+    "main.b6066578.js.map": "/reactGit-Project/static/js/main.b6066578.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3c7e43d.css",
+    "static/js/main.b6066578.js"
+  ]
+}
