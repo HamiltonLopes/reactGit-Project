@@ -36,6 +36,9 @@
 
 
 @media only screen and (max-width: 1024px) {
+    body {
+        overflow: hidden; /* Hide scrollbars */
+    }
     .wrapperRep{
         padding-inline: 5rem;
         font-size: 120%;
