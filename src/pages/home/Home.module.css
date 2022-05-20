@@ -41,10 +41,6 @@
 }
 
 @media only screen and (max-width: 1024px) {
-    body {
-        overflow: hidden; /* Hide scrollbars */
-    }
-
     .classImgHome{
         margin-top: 50%;
         width: 50%;
